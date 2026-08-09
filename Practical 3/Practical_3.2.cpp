@@ -3,30 +3,32 @@ using namespace std;
 
 void sortColors(int arr[], int n)
 {
-    int low = 0;
-    int mid = 0;
-    int high = n - 1;
+    int index = 0;
 
-    while(mid <= high)
+    for(int i = 0; i < n; i++)
     {
-        if(arr[mid] == 0)
+        if(arr[i] == 0)
         {
-            int temp = arr[low];
-            arr[low] = arr[mid];
-            arr[mid] = temp;
-            low++;
-            mid++;
+            arr[index] = 0;
+            index++;
         }
-        else if(arr[mid] == 1)
+    }
+
+    for(int i = 0; i < n; i++)
+    {
+        if(arr[i] == 1)
         {
-            mid++;
+            arr[index] = 1;
+            index++;
         }
-        else
+    }
+
+    for(int i = 0; i < n; i++)
+    {
+        if(arr[i] == 2)
         {
-            int temp = arr[mid];
-            arr[mid] = arr[high];
-            arr[high] = temp;
-            high--;
+            arr[index] = 2;
+            index++;
         }
     }
 }
@@ -41,12 +43,14 @@ int main()
     int arr[n];
 
     cout << "Enter colour codes (0, 1, 2):" << endl;
+
     for(int i = 0; i < n; i++)
         cin >> arr[i];
 
     sortColors(arr, n);
 
     cout << "Sorted colour codes: ";
+
     for(int i = 0; i < n; i++)
         cout << arr[i] << " ";
 
